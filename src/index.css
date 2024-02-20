@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+}
+
+/* .app {
+  max-width: 1024px;
+} */
+
+.nav {
+  margin: 0 auto;
+  max-width: 1624px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+hr {
+  max-width: 1600px;
+  margin: 0 auto;
+
+  border: 1px solid rgba(0, 0, 0, 0.214);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  /* color: #ffb700; */
+  font-size: 2.5rem;
+}
+
+.nav-links ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-links ul li {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.nav-links ul li:last-child {
+  display: flex;
+  align-items: center;
+  background-color: rgb(234, 230, 230);
+  padding: 10px 10px;
+  border-radius: 8px;
+}
+
+.greet {
+  max-width: 1024px;
+  margin: 15px auto 30px;
+}
+
+.greet h1 {
+  font-size: 3rem;
+}
+
+.hero {
+  margin: 0 auto;
+  max-width: 1024px;
+  display: flex;
+  background: linear-gradient(45deg,
+      rgba(245, 69, 66, 0.689),
+      rgba(8, 82, 156, 0.362)), url(../public/newbg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  padding: 20px;
+  align-items: flex-end;
+  color: #ffffff;
+  border-radius: 12px;
+}
+
+.intro {
+  padding-left: 20px;
+}
+
+.intro h1 {
+  margin-bottom: 15px;
+  font-size: 4.5rem;
+}
+
+.intro p {
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  padding: 12px 19px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Work Sans", sans-serif;
+}
+
+.btn1 {
+  background-color: #fcc439;
+}
+
+.friend_list {
+  max-width: 1024px;
+  margin: 50px auto 80px;
+  /* display: grid;
+  grid-template-columns: 34rem 44rem; */
+  display: flex;
+
+}
+
+.friend_list ul {
+  list-style: none;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+
+.friend_list ul li {
+  display: grid;
+  grid-template-columns: 4.8rem 1fr auto;
+  align-items: center;
+  column-gap: 1.6rem;
+
+  padding: 1.2rem 0;
+  border-radius: 7px;
+  transition: 0.5s;
+}
+
+/* .selected,
+.sidebar li:hover {
+  background-color: var(--color-lightest);
+} */
+
+.friend_list li img {
+  border-radius: 50%;
+  width: 100%;
+  grid-row: span 2;
+}
+
+.friend_list li h3 {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.friend_list li p {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.button1 {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 400;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Work Sans", sans-serif;
+}
+
+.friend_list li .button {
+  grid-row: span 2;
+  grid-column: 3;
+  background-color: #fcc439;
+}
+
+.friend_list>.button {
+  float: right;
+  margin-right: 1.2rem;
+
+}
+
+.green {
+  color: #66a80f;
+}
+
+.red {
+  color: #e03131;
+}
+
+.parent-form {
+  max-width: 1024px;
+  margin: 40px auto 20px;
+}
+
+.form-add-friend {
+  font-size: 1.6rem;
+  max-width: 300px;
+  /* Adjust as needed */
+
+  /* Center the form horizontally */
+  padding: 20px;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  /* background-color: #f9f9f9; */
+}
+
+.form-add-friend label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-add-friend input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Adjust button styles based on your Button component */
+.form-add-friend Button {
+  width: 100%;
+  padding: 10px;
+  background-color: #fcc439;
+  color: #000000;
+  font-size: 16px;
+  font-family: inherit;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-add-friend Button:hover {
+  background-color: #e5a503;
+}
+
+.form-split-bill {
+  grid-template-columns: 1fr 12rem;
+  padding: 3.2rem 4rem;
+  max-width: 400px;
+  font-size: 1.6rem;
+  /* Adjust as needed */
+  /* margin: 0 auto; */
+
+  margin-left: 100px;
+  padding: 20px;
+
+}
+
+.form-split-bill h2 {
+  margin-bottom: 20px;
+}
+
+.form-split-bill label {
+  /* display: block; */
+  margin-bottom: 10px;
+}
+
+.form-split-bill input[type="text"],
+.form-split-bill select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-split-bill button {
+  width: 100%;
+  padding: 10px;
+  background-color: #fcc439;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-split-bill button:hover {
+  background-color: #e5a503;
+}
