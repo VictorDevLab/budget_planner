@@ -5,20 +5,21 @@ import { RiStockFill } from "react-icons/ri";
 const initialFriends = [
   {
     id: 118836,
-    name: "Clark",
-    image: "https://i.pravatar.cc/48?u=118836",
+    name: "Koome",
+    // image: "https://i.pravatar.cc/48?u=118836",
+    image: "./images-folder/koome.jpeg",
     balance: -7,
   },
   {
     id: 933372,
-    name: "Sarah",
-    image: "https://i.pravatar.cc/48?u=933372",
+    name: "Esther",
+    image: "./images-folder/esther.jpeg",
     balance: 20,
   },
   {
     id: 499476,
-    name: "Anthony",
-    image: "https://i.pravatar.cc/48?u=499476",
+    name: "Dennis",
+    image: "./images-folder/thor.jpeg",
     balance: 0,
   },
 ];
@@ -169,7 +170,7 @@ const Friend = ({ friend, selectedFriend, onSelectFriend }) => {
   const isSelected = selectedFriend?.id === friend.id;
   return (
     <li className="friend">
-      <img src={friend.image} alt={friend.name} />
+      <img className="image" src={friend.image} alt={friend.name} />
       <h3>{friend.name}</h3>
       {friend.balance > 0 ? (
         <p className="green">
