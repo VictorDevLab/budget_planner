@@ -125,7 +125,7 @@ hr {
   /* display: grid;
   grid-template-columns: 34rem 44rem; */
   display: flex;
-
+  /* margin-left: 20px; */
 }
 
 .friend_list ul {
@@ -257,13 +257,24 @@ hr {
   /* Adjust as needed */
   /* margin: 0 auto; */
 
-  margin-left: 100px;
+  margin-left: 80px;
   padding: 20px;
-
+  opacity: 1;
+  transition: 0.5s;
+  margin-bottom: 100px;
+  /* Add transition for opacity */
 }
+
+.form-split-bill.active {
+  opacity: 1;
+  /* Apply opacity only when form is active */
+}
+
+
 
 .form-split-bill h2 {
   margin-bottom: 20px;
+
 }
 
 .form-split-bill label {
@@ -295,4 +306,45 @@ hr {
 
 .form-split-bill button:hover {
   background-color: #e5a503;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 2.1rem;
+  }
+
+  .greet {
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+
+  .greet h1 {
+    font-size: 2.7rem;
+  }
+
+  .hero {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 8px;
+  }
+
+  .friend_list {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .parent-form {
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-add-friend {
+    width: 400px;
+  }
+
+  .form-split-bill {
+    margin-left: 10px;
+    padding: 1px;
+    margin-bottom: 30px;
+  }
 }

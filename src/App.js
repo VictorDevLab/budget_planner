@@ -43,6 +43,19 @@ export default function App() {
       // Otherwise, set the selected friend to the clicked friend
       curselected?.id === friend.id ? null : friend
     );
+    setIsOpen(false);
+  };
+
+  const handleSplitBill = (value) => {
+    //console.log(value);
+    setFriends((friends) =>
+      friends.map((friend) =>
+        friend.id === selectedFriend.id
+          ? { ...friend, balance: friend.balance + value }
+          : friend
+      )
+    );
+    setSelectedFriend(null);
   };
 
   return (
@@ -58,7 +71,12 @@ export default function App() {
           selectedFriend={selectedFriend}
           onSelectFriend={handleSelectedFriend}
         />
-        {selectedFriend && <FormSplitBill selectedFriend={selectedFriend} />}
+        {selectedFriend && (
+          <FormSplitBill
+            selectedFriend={selectedFriend}
+            onSplitBill={handleSplitBill}
+          />
+        )}
       </div>
     </div>
   );
@@ -76,7 +94,7 @@ function Nav() {
         </h2>
         <div className="nav-links">
           <ul>
-            <li>Transactions</li>
+            {/* <li>Transactions</li> */}
             <li>Planner</li>
             <li>
               <IoSettings />
@@ -89,9 +107,21 @@ function Nav() {
   );
 }
 function Greeting() {
+  const hour = new Date().getHours();
+
+  let greeting = "";
+
+  if (hour >= 0 && hour < 12) {
+    greeting = "Good Morning!";
+  } else if (hour >= 12 && hour < 17) {
+    greeting = "Good Afternoon!";
+  } else {
+    greeting = "Good Evening!";
+  }
+
   return (
     <div className="greet">
-      <h1>Good Morning</h1>
+      <h1>{greeting}</h1>
     </div>
   );
 }
@@ -99,8 +129,11 @@ function Hero({ onOpen, isOpen }) {
   return (
     <div className="hero">
       <div className="intro">
-        <h1>Today's Budget</h1>
-        <p>You have spent $1500 this month.You're on track!</p>
+        <h1>Split Bills with Friends Effortlessly</h1>
+        <p>
+          Collaborate with friends to track shared expenses, simplify bill
+          splitting, and keep your finances balanced together.
+        </p>
         <div className="buttons">
           <button className="btn btn1" onClick={onOpen}>
             {isOpen ? "close" : "Add a friend"}
@@ -190,18 +223,53 @@ const FormAddFriend = ({ onAddFriend }) => {
     </div>
   );
 };
-const FormSplitBill = ({ selectedFriend }) => {
+const FormSplitBill = ({ selectedFriend, onSplitBill }) => {
+  const [bill, setBill] = useState("");
+  const [userExpense, setUserExpense] = useState("");
+  //check first is there is a bill
+  const paidByFriend = bill ? bill - userExpense : "";
+
+  const [whoIsPaying, setWhoIsPaying] = useState("you");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!bill || !userExpense) return;
+    onSplitBill(whoIsPaying === "you" ? paidByFriend : -userExpense);
+  };
+
   return (
-    <form className="form-split-bill">
+    <form className="form-split-bill" onSubmit={handleSubmit}>
       <h2>Split Bill With {selectedFriend?.name}</h2>
+
       <label>Bill value</label>
-      <input type="text" placeholder="Enter bill value" />
+      <input
+        type="text"
+        value={bill}
+        onChange={(e) => setBill(Number(e.target.value))}
+        placeholder="Enter bill value"
+      />
+
       <label>Your expense</label>
-      <input type="text" placeholder="Enter your expense" />
+      <input
+        type="text"
+        value={userExpense}
+        onChange={(e) =>
+          setUserExpense(
+            //to make sure that what is paid by the user does not exceed the bill
+            Number(e.target.value) > bill ? userExpense : Number(e.target.value)
+          )
+        }
+        placeholder="Enter your expense"
+      />
+
       <label>{selectedFriend?.name}'s expense</label>
-      <input type="text" />
+      <input type="text" value={paidByFriend} disabled />
+
       <label>Who is paying the bill?</label>
-      <select>
+      <select
+        value={whoIsPaying}
+        onChange={(e) => setWhoIsPaying(e.target.value)}
+      >
         <option value="you">You</option>
         <option value="friend">{selectedFriend?.name}</option>
       </select>
@@ -210,6 +278,7 @@ const FormSplitBill = ({ selectedFriend }) => {
   );
 };
 
+//children prop
 const Button = ({ children, onClick }) => {
   return (
     <button className="button" onClick={onClick}>
