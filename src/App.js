@@ -217,6 +217,7 @@ const FormAddFriend = ({ onAddFriend }) => {
         <input
           type="text"
           value={image}
+          disabled
           onChange={(e) => setImage(e.target.value)}
         />
         <Button>Add</Button>
