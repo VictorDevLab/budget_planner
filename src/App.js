@@ -6,7 +6,6 @@ const initialFriends = [
   {
     id: 118836,
     name: "Koome",
-    // image: "https://i.pravatar.cc/48?u=118836",
     image: "./images-folder/koome.jpeg",
     balance: -7,
   },
@@ -76,6 +75,7 @@ export default function App() {
           <FormSplitBill
             selectedFriend={selectedFriend}
             onSplitBill={handleSplitBill}
+            key={selectedFriend.id}
           />
         )}
       </div>
